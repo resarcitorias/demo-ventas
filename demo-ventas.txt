@@ -1,0 +1,37 @@
+demo-ventas/
+├── docker-compose.yml
+├── Dockerfile
+├── pom.xml
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/ejemplo/ventas/
+        │       ├── VentasApplication.java
+        │       ├── controller/
+        │       │   ├── ProductoController.java
+        │       │   ├── VentaController.java
+        │       │   └── WebController.java      (para Thymeleaf)
+        │       ├── entity/
+        │       │   ├── Producto.java
+        │       │   ├── Venta.java
+        │       │   └── ProductoVenta.java
+        │       ├── repository/
+        │       │   ├── ProductoRepository.java
+        │       │   ├── VentaRepository.java
+        │       │   └── ProductoVentaRepository.java
+        │       ├── service/
+        │       │   ├── ProductoService.java
+        │       │   └── VentaService.java
+        │       └── dto/
+        │           └── VentaRequestDTO.java    (para recibir datos de venta)
+        └── resources/
+            ├── application.properties
+            ├── static/
+            └── templates/
+                ├── productos/
+                │   ├── lista.html
+                │   ├── formulario.html
+                │   └── ver.html
+                └── ventas/
+                    ├── lista.html
+                    └── nueva.html

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Venta</title>
+</head>
+<body>
+    <h1>Registrar Venta</h1>
+    <div th:if="${error}" th:text="${error}" style="color:red"></div>
+    <form method="post" action="/ventas">
+        <table id="items">
+            <tr>
+                <th>Producto</th><th>Cantidad</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="productoId">
+                        <option th:each="p : ${productos}" th:value="${p.id}" th:text="${p.nombre}"></option>
+                    </select>
+                </td>
+                <td><input type="number" name="cantidad" min="1" value="1"/></td>
+            </tr>
+        </table>
+        <button type="button" onclick="agregarFila()">Agregar Producto</button>
+        <br><br>
+        <input type="submit" value="Registrar Venta"/>
+    </form>
+    <script>
+        function agregarFila() {
+            var table = document.getElementById("items");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var selectOriginal = document.querySelector('select[name="productoId"]');
+            var cloneSelect = selectOriginal.cloneNode(true);
+            cloneSelect.name = "productoId";
+            cell1.appendChild(cloneSelect);
+            var input = document.createElement('input');
+            input.type = 'number';
+            input.name = 'cantidad';
+            input.min = '1';
+            input.value = '1';
+            cell2.appendChild(input);
+        }
+    </script>
+    <a href="/ventas">Cancelar</a>
+</body>
+</html>

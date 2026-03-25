@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalle Venta</title>
+</head>
+<body>
+    <h1>Detalle de Venta #<span th:text="${venta.id}"></span></h1>
+    <p>Fecha: <span th:text="${venta.fecha}"></span></p>
+    <p>Total: <span th:text="${venta.totalventa}"></span></p>
+    <h2>Productos</h2>
+    <table border="1">
+        <tr>
+            <th>Producto</th><th>Cantidad</th><th>Precio Unitario</th><th>Subtotal</th>
+        </tr>
+        <tr th:each="det : ${venta.productosVenta}">
+            <td th:text="${det.producto.nombre}"></td>
+            <td th:text="${det.cantidad}"></td>
+            <td th:text="${det.producto.costo}"></td>
+            <td th:text="${det.producto.costo * det.cantidad}"></td>
+        </tr>
+    </table>
+    <a href="/ventas">Volver</a>
+</body>
+</html>
